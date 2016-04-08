@@ -2,6 +2,6 @@
 
 class couchdb::package {
   package { 'couchdb':
-    ensure  => installed,
+    ensure  => $couchdb::package_ensure,
   }
 }
