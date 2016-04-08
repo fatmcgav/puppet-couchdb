@@ -1,0 +1,46 @@
+##########################################
+#   This file is managed by puppet       #
+#   ANY CHANGES COULD BE OVERWRITTEN     #
+##########################################
+
+[couchdb]
+database_dir = <%= scope['couchdb::database_dir'] %>
+view_index_dir = <%= scope['couchdb::view_index_dir'] %>
+<% if ![:undef,nil].include?(scope['couchdb::util_driver_dir']) -%>
+util_driver_dir = <%= scope['couchdb::util_driver_dir'] %>
+<% end -%>
+max_document_size = <%= scope['couchdb::max_document_size'] %>
+max_attachment_chunk_size = <%= scope['couchdb::max_attachment_chunk_size'] %>
+os_process_timeout = <%= scope['couchdb::os_process_timeout'] %>
+max_dbs_open = <%= scope['couchdb::max_dbs_open'] %>
+delayed_commits = <%= scope['couchdb::delayed_commits'] %>
+uri_file = <%= scope['couchdb::uri_file'] %>
+
+[httpd]
+port = <%= scope['couchdb::port'] %>
+bind_address = <%= scope['couchdb::bind_address'] %>
+max_connections = <%= scope['couchdb::max_connections'] %>
+authentication_handlers = <%= scope['couchdb::authentication_handlers'] %>
+default_handler = <%= scope['couchdb::default_handler'] %>
+secure_rewrites = <%= scope['couchdb::secure_rewrites'] %>
+vhost_global_handlers = <%= scope['couchdb::vhost_global_handlers'] %>
+allow_jsonp = <%= scope['couchdb::allow_jsonp'] %>
+log_max_chunk_size = <%= scope['couchdb::log_max_chunk_size'] %>
+
+[log]
+file = <%= scope['couchdb::log_file'] %>
+level = <%= scope['couchdb::log_level'] %>
+include_sasl = <%= scope['couchdb::include_sasl'] %>
+
+[couch_httpd_auth]
+secret = <%= scope['couchdb::secret'] %>
+
+[query_servers]
+javascript = <%= scope['couchdb::javascript'] %>
+
+; Changing reduce_limit to false will disable reduce_limit.
+; If you think you're hitting reduce_limit with a "good" reduce function,
+; please let us know on the mailing list so we can fine tune the heuristic.
+[query_server_config]
+reduce_limit = <%= scope['couchdb::reduce_limit'] %>
+
