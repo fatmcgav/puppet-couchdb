@@ -79,6 +79,7 @@ class couchdb (
   $authentication_handlers    = $couchdb::params::authentication_handlers,
   $bind_address               = $couchdb::params::bind_address,
   $couchdb_conf_dir           = $couchdb::params::couchdb_conf_dir,
+  $create_admin               = $couchdb::params::create_admin,
   $database_dir               = $couchdb::params::database_dir,
   $delayed_commits            = $couchdb::params::delayed_commits,
   $default_handler            = $couchdb::params::default_handler,
@@ -123,7 +124,10 @@ class couchdb (
 
   class { 'couchdb::service': }
 
-  couchdb::admin { $admin_name:
-    password => $admin_password,
+  if $create_admin {
+    couchdb::admin { $admin_name:
+      password => $admin_password,
+    }
   }
+
 }

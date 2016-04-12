@@ -19,6 +19,7 @@ class couchdb::params {
   $authentication_handlers    = '{couch_httpd_oauth, oauth_authentication_handler}, {couch_httpd_auth, cookie_authentication_handler}, {couch_httpd_auth, default_authentication_handler}'
   $bind_address               = '127.0.0.1'
   $couchdb_conf_dir           = '/etc/couchdb'
+  $create_admin               = true
   $database_dir               = '/var/lib/couchdb'
   $delayed_commits            = true
   $default_handler            = '{couch_httpd_db, handle_request}'
